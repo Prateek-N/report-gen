@@ -142,17 +142,19 @@ button:active {
 /* Report Preview Styling (Specifically for PDF Generation - Keep Light/Clean) */
 .report-preview {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    color: var(--report-text);
+    color: #333333 !important;
     padding: 40px; /* More padding for PDF look */
-    background: var(--report-bg);
+    background: #ffffff !important;
     /* Important: Override dark theme inheritance for PDF content */
     border: 1px solid #ddd;
     margin-top: 20px;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .report-preview h3 {
-    color: var(--report-heading);
-    border-bottom: 1px solid var(--report-border);
+    color: #0056b3 !important;
+    border-bottom: 1px solid #eeeeee !important;
     padding-bottom: 8px;
     margin-top: 25px;
     font-size: 1.2em;
@@ -161,7 +163,7 @@ button:active {
 
 .report-preview p {
     text-align: left; /* Reset center alignment from body p style */
-    color: var(--report-text);
+    color: #333333 !important;
     margin: 6px 0;
     line-height: 1.5;
 }
@@ -169,11 +171,12 @@ button:active {
 .report-preview ul {
     margin: 6px 0;
     padding-left: 24px;
-    color: var(--report-text);
+    color: #333333 !important;
 }
 
 .report-preview li {
     margin-bottom: 6px;
+    color: #333333 !important;
 }
 
 .email-header p {

@@ -64,26 +64,43 @@ document.getElementById('generateBtn').addEventListener('click', function() {
 
 
     // 2. Prepare for PDF Generation
-    const element = document.getElementById('reportPreview');
+    const originalElement = document.getElementById('reportPreview');
     
-    // Show the element temporarily for rendering
+    // Clone the element to ensure we don't mess with the original hidden one
+    // and to render it in a clean state for html2pdf
+    const element = originalElement.cloneNode(true);
+    
+    // Explicitly set styles to ensure it renders correctly
     element.style.display = 'block';
+    element.style.width = '800px'; // Fixed width for A4 consistency
+    element.style.background = '#ffffff';
+    element.style.color = '#333333';
+    element.style.position = 'absolute';
+    element.style.left = '-9999px'; // Move off-screen but keep visible
+    element.style.top = '0';
+    
+    // Append to body so it's part of the DOM
+    document.body.appendChild(element);
 
     // 3. Generate PDF
     const opt = {
         margin:       0.5,
         filename:     `Mock_Report_${name.replace(/\s+/g, '_')}_${new Date().toISOString().slice(0,10)}.pdf`,
         image:        { type: 'jpeg', quality: 0.98 },
-        html2canvas:  { scale: 2 },
+        html2canvas:  { scale: 2, useCORS: true },
         jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
     };
 
     html2pdf().set(opt).from(element).save().then(() => {
-        // 4. Hide after generation
-        element.style.display = 'none';
+        // 4. Cleanup
+        if (document.body.contains(element)) {
+            document.body.removeChild(element);
+        }
     }).catch(err => {
         console.error("PDF generation failed:", err);
         alert("Error generating PDF. Please check console.");
-        element.style.display = 'none'; // Ensure it's hidden on error too
+        if (document.body.contains(element)) {
+            document.body.removeChild(element);
+        }
     });
 });

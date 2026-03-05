@@ -141,48 +141,50 @@
             <button type="button" id="generateBtn">Generate PDF</button>
         </form>
 
-        <!-- Hidden Report Template for PDF Generation -->
-        <div id="reportPreview" class="report-preview" style="display: none;">
-            <div class="email-header">
-                <p><strong>Subject:</strong> [MOCK REPORT] <span id="outSubjectName"></span> | <span id="outSubjectConcern">Needs Improvement</span></p>
-                <p><strong>To:</strong> Tech Leaders</p>
-                <p><strong>Candidate:</strong> <span id="outCandidateName"></span> (ID: <span id="outCandidateId"></span>)</p>
-                <p><strong>Role/Track:</strong> <span id="outRoleTrack"></span></p>
-                <p><strong>Expert/Owner:</strong> <span id="outExpertOwner"></span></p>
-                <p><strong>Date:</strong> <span id="outDate"></span></p>
-            </div>
-            <hr>
-            
-            <h3>1) Quick Summary (3–5 lines)</h3>
-            <p><strong>What happened recently:</strong> <span id="outSummaryRecent"></span></p>
-            <p><strong>Main concern:</strong> <span id="outSummaryConcern"></span></p>
-            <p><strong>What I did today:</strong> <span id="outSummaryToday"></span></p>
-            <p><strong>What I need next:</strong> <span id="outSummaryNext"></span></p>
+        </form>
+    </div>
 
-            <h3>2) What I Observed (facts only)</h3>
-            <p><strong>Communication / explanation:</strong> <span id="outObsComm"></span></p>
-            <p><strong>Basics / concepts:</strong> <span id="outObsBasics"></span></p>
-            <p><strong>Practical problem solving:</strong> <span id="outObsProblem"></span></p>
-            <p><strong>Repeat patterns (if any):</strong> <span id="outObsPatterns"></span></p>
-
-            <h3>3) Gaps (clear bullets)</h3>
-            <ul>
-                <li id="outGap1"></li>
-                <li id="outGap2"></li>
-                <li id="outGap3"></li>
-            </ul>
-
-            <h3>4) What I Provided (proof of work)</h3>
-            <p><strong>Mock taken on:</strong> <span id="outProvMockTime"></span></p>
-            <p><strong>Feedback shared (documented):</strong> <span id="outProvFeedback"></span></p>
-            <p><strong>Documents/shared notes:</strong> <span id="outProvDocs"></span></p>
-            <p><strong>Next mock/evaluation planned:</strong> <span id="outProvNextMock"></span></p>
-
-            <h3>5) Next 7-Day Plan (simple + measurable)</h3>
-            <p><strong>Candidate will complete:</strong> <span id="outPlanCandidate"></span></p>
-            <p><strong>I will do:</strong> <span id="outPlanExpert"></span></p>
-            <p><strong>I will update on email by:</strong> <span id="outPlanUpdate"></span></p>
+    <!-- Hidden Report Template for PDF Generation -->
+    <div id="reportPreview" class="report-preview" style="display: none;">
+        <div class="email-header">
+            <p><strong>Subject:</strong> [MOCK REPORT] <span id="outSubjectName"></span> | <span id="outSubjectConcern">Needs Improvement</span></p>
+            <p><strong>To:</strong> Tech Leaders</p>
+            <p><strong>Candidate:</strong> <span id="outCandidateName"></span> (ID: <span id="outCandidateId"></span>)</p>
+            <p><strong>Role/Track:</strong> <span id="outRoleTrack"></span></p>
+            <p><strong>Expert/Owner:</strong> <span id="outExpertOwner"></span></p>
+            <p><strong>Date:</strong> <span id="outDate"></span></p>
         </div>
+        <hr>
+        
+        <h3>1) Quick Summary (3–5 lines)</h3>
+        <p><strong>What happened recently:</strong> <span id="outSummaryRecent"></span></p>
+        <p><strong>Main concern:</strong> <span id="outSummaryConcern"></span></p>
+        <p><strong>What I did today:</strong> <span id="outSummaryToday"></span></p>
+        <p><strong>What I need next:</strong> <span id="outSummaryNext"></span></p>
+
+        <h3>2) What I Observed (facts only)</h3>
+        <p><strong>Communication / explanation:</strong> <span id="outObsComm"></span></p>
+        <p><strong>Basics / concepts:</strong> <span id="outObsBasics"></span></p>
+        <p><strong>Practical problem solving:</strong> <span id="outObsProblem"></span></p>
+        <p><strong>Repeat patterns (if any):</strong> <span id="outObsPatterns"></span></p>
+
+        <h3>3) Gaps (clear bullets)</h3>
+        <ul>
+            <li id="outGap1"></li>
+            <li id="outGap2"></li>
+            <li id="outGap3"></li>
+        </ul>
+
+        <h3>4) What I Provided (proof of work)</h3>
+        <p><strong>Mock taken on:</strong> <span id="outProvMockTime"></span></p>
+        <p><strong>Feedback shared (documented):</strong> <span id="outProvFeedback"></span></p>
+        <p><strong>Documents/shared notes:</strong> <span id="outProvDocs"></span></p>
+        <p><strong>Next mock/evaluation planned:</strong> <span id="outProvNextMock"></span></p>
+
+        <h3>5) Next 7-Day Plan (simple + measurable)</h3>
+        <p><strong>Candidate will complete:</strong> <span id="outPlanCandidate"></span></p>
+        <p><strong>I will do:</strong> <span id="outPlanExpert"></span></p>
+        <p><strong>I will update on email by:</strong> <span id="outPlanUpdate"></span></p>
     </div>
 
     <script src="script.js"></script>
