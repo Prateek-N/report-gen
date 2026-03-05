@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mock Report Generator</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Mock Report Generator</h1>
+        <p>Fill out the form below to generate the Mock Report email PDF.</p>
+        
+        <form id="reportForm">
+            <!-- Header Info -->
+            <div class="section">
+                <h2>Header Information</h2>
+                <div class="form-group">
+                    <label for="candidateName">Candidate Name:</label>
+                    <input type="text" id="candidateName" required>
+                </div>
+                <div class="form-group">
+                    <label for="candidateId">Candidate ID:</label>
+                    <input type="text" id="candidateId" required>
+                </div>
+                <div class="form-group">
+                    <label for="roleTrack">Role/Track:</label>
+                    <input type="text" id="roleTrack" required>
+                </div>
+                <div class="form-group">
+                    <label for="expertOwner">Expert/Owner:</label>
+                    <input type="text" id="expertOwner" required>
+                </div>
+                <div class="form-group">
+                    <label for="reportDate">Date:</label>
+                    <input type="date" id="reportDate" required>
+                </div>
+            </div>
+
+            <!-- 1) Quick Summary -->
+            <div class="section">
+                <h2>1) Quick Summary (3–5 lines)</h2>
+                <div class="form-group">
+                    <label for="summaryRecent">What happened recently:</label>
+                    <textarea id="summaryRecent" rows="2"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="summaryConcern">Main concern:</label>
+                    <textarea id="summaryConcern" rows="2"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="summaryToday">What I did today:</label>
+                    <textarea id="summaryToday" rows="2"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="summaryNext">What I need next:</label>
+                    <textarea id="summaryNext" rows="2"></textarea>
+                </div>
+            </div>
+
+            <!-- 2) What I Observed -->
+            <div class="section">
+                <h2>2) What I Observed (facts only)</h2>
+                <div class="form-group">
+                    <label for="obsComm">Communication / explanation:</label>
+                    <textarea id="obsComm" rows="2"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="obsBasics">Basics / concepts:</label>
+                    <textarea id="obsBasics" rows="2"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="obsProblem">Practical problem solving:</label>
+                    <textarea id="obsProblem" rows="2"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="obsPatterns">Repeat patterns (if any):</label>
+                    <textarea id="obsPatterns" rows="2"></textarea>
+                </div>
+            </div>
+
+            <!-- 3) Gaps -->
+            <div class="section">
+                <h2>3) Gaps (clear bullets)</h2>
+                <div class="form-group">
+                    <label for="gap1">Gap 1:</label>
+                    <input type="text" id="gap1">
+                </div>
+                <div class="form-group">
+                    <label for="gap2">Gap 2:</label>
+                    <input type="text" id="gap2">
+                </div>
+                <div class="form-group">
+                    <label for="gap3">Gap 3:</label>
+                    <input type="text" id="gap3">
+                </div>
+            </div>
+
+            <!-- 4) What I Provided -->
+            <div class="section">
+                <h2>4) What I Provided (proof of work)</h2>
+                <div class="form-group">
+                    <label for="provMockTime">Mock taken on (Date/Time):</label>
+                    <input type="datetime-local" id="provMockTime">
+                </div>
+                <div class="form-group">
+                    <label for="provFeedback">Feedback shared (documented):</label>
+                    <select id="provFeedback">
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="provDocs">Documents/shared notes:</label>
+                    <textarea id="provDocs" rows="2"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="provNextMock">Next mock/evaluation planned:</label>
+                    <input type="date" id="provNextMock">
+                </div>
+            </div>
+
+            <!-- 5) Next 7-Day Plan -->
+            <div class="section">
+                <h2>5) Next 7-Day Plan (simple + measurable)</h2>
+                <div class="form-group">
+                    <label for="planCandidate">Candidate will complete (topics/tasks):</label>
+                    <textarea id="planCandidate" rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="planExpert">I will do (mock/evaluation/training session):</label>
+                    <textarea id="planExpert" rows="2"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="planUpdate">I will update on email by:</label>
+                    <input type="date" id="planUpdate">
+                </div>
+            </div>
+
+            <button type="button" id="generateBtn">Generate PDF</button>
+        </form>
+
+        <!-- Hidden Report Template for PDF Generation -->
+        <div id="reportPreview" class="report-preview" style="display: none;">
+            <div class="email-header">
+                <p><strong>Subject:</strong> [MOCK REPORT] <span id="outSubjectName"></span> | <span id="outSubjectConcern">Needs Improvement</span></p>
+                <p><strong>To:</strong> Tech Leaders</p>
+                <p><strong>Candidate:</strong> <span id="outCandidateName"></span> (ID: <span id="outCandidateId"></span>)</p>
+                <p><strong>Role/Track:</strong> <span id="outRoleTrack"></span></p>
+                <p><strong>Expert/Owner:</strong> <span id="outExpertOwner"></span></p>
+                <p><strong>Date:</strong> <span id="outDate"></span></p>
+            </div>
+            <hr>
+            
+            <h3>1) Quick Summary (3–5 lines)</h3>
+            <p><strong>What happened recently:</strong> <span id="outSummaryRecent"></span></p>
+            <p><strong>Main concern:</strong> <span id="outSummaryConcern"></span></p>
+            <p><strong>What I did today:</strong> <span id="outSummaryToday"></span></p>
+            <p><strong>What I need next:</strong> <span id="outSummaryNext"></span></p>
+
+            <h3>2) What I Observed (facts only)</h3>
+            <p><strong>Communication / explanation:</strong> <span id="outObsComm"></span></p>
+            <p><strong>Basics / concepts:</strong> <span id="outObsBasics"></span></p>
+            <p><strong>Practical problem solving:</strong> <span id="outObsProblem"></span></p>
+            <p><strong>Repeat patterns (if any):</strong> <span id="outObsPatterns"></span></p>
+
+            <h3>3) Gaps (clear bullets)</h3>
+            <ul>
+                <li id="outGap1"></li>
+                <li id="outGap2"></li>
+                <li id="outGap3"></li>
+            </ul>
+
+            <h3>4) What I Provided (proof of work)</h3>
+            <p><strong>Mock taken on:</strong> <span id="outProvMockTime"></span></p>
+            <p><strong>Feedback shared (documented):</strong> <span id="outProvFeedback"></span></p>
+            <p><strong>Documents/shared notes:</strong> <span id="outProvDocs"></span></p>
+            <p><strong>Next mock/evaluation planned:</strong> <span id="outProvNextMock"></span></p>
+
+            <h3>5) Next 7-Day Plan (simple + measurable)</h3>
+            <p><strong>Candidate will complete:</strong> <span id="outPlanCandidate"></span></p>
+            <p><strong>I will do:</strong> <span id="outPlanExpert"></span></p>
+            <p><strong>I will update on email by:</strong> <span id="outPlanUpdate"></span></p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

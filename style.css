@@ -1,0 +1,199 @@
+:root {
+    /* Dark Theme Variables */
+    --bg-primary: #121212;
+    --bg-secondary: #1e1e1e;
+    --bg-input: #2d2d2d;
+    --text-primary: #e0e0e0;
+    --text-secondary: #a0a0a0;
+    --border-color: #333;
+    --accent-color: #4CAF50; /* Green */
+    --accent-hover: #45a049;
+    --input-focus-border: #4CAF50;
+    --heading-color: #ffffff;
+    
+    /* PDF/Report Theme (Light) */
+    --report-bg: #ffffff;
+    --report-text: #333333;
+    --report-heading: #0056b3;
+    --report-border: #eeeeee;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    margin: 0;
+    padding: 20px;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: var(--bg-secondary);
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+    border: 1px solid var(--border-color);
+}
+
+h1 {
+    text-align: center;
+    color: var(--heading-color);
+    margin-bottom: 10px;
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+p {
+    text-align: center;
+    color: var(--text-secondary);
+    margin-bottom: 30px;
+}
+
+h2 {
+    color: var(--accent-color);
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 10px;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    font-size: 1.4em;
+    font-weight: 500;
+}
+
+.section:first-of-type h2 {
+    margin-top: 10px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--text-secondary);
+    font-size: 0.95em;
+}
+
+input[type="text"],
+input[type="date"],
+input[type="datetime-local"],
+textarea,
+select {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--bg-input);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    box-sizing: border-box;
+    color: var(--text-primary);
+    font-family: inherit;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+    border-color: var(--input-focus-border);
+    box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.2);
+}
+
+/* Fix for date/datetime inputs in dark mode (calendar icon) */
+input[type="date"]::-webkit-calendar-picker-indicator,
+input[type="datetime-local"]::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+    cursor: pointer;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+button {
+    display: block;
+    width: 100%;
+    padding: 16px;
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 30px;
+    transition: background-color 0.3s, transform 0.1s;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+button:hover {
+    background-color: var(--accent-hover);
+    transform: translateY(-1px);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+/* Report Preview Styling (Specifically for PDF Generation - Keep Light/Clean) */
+.report-preview {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    color: var(--report-text);
+    padding: 40px; /* More padding for PDF look */
+    background: var(--report-bg);
+    /* Important: Override dark theme inheritance for PDF content */
+    border: 1px solid #ddd;
+    margin-top: 20px;
+}
+
+.report-preview h3 {
+    color: var(--report-heading);
+    border-bottom: 1px solid var(--report-border);
+    padding-bottom: 8px;
+    margin-top: 25px;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.report-preview p {
+    text-align: left; /* Reset center alignment from body p style */
+    color: var(--report-text);
+    margin: 6px 0;
+    line-height: 1.5;
+}
+
+.report-preview ul {
+    margin: 6px 0;
+    padding-left: 24px;
+    color: var(--report-text);
+}
+
+.report-preview li {
+    margin-bottom: 6px;
+}
+
+.email-header p {
+    margin: 4px 0;
+}
+
+/* Scrollbar Styling for Webkit */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--bg-input);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
