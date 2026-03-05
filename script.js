@@ -86,7 +86,8 @@ document.getElementById('generateBtn').addEventListener('click', function() {
         filename:     `Mock_Report_${name.replace(/\s+/g, '_')}_${new Date().toISOString().slice(0,10)}.pdf`,
         image:        { type: 'jpeg', quality: 0.98 },
         html2canvas:  { scale: 2, useCORS: true, scrollY: 0 },
-        jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+        jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' },
+        pagebreak:    { mode: ['avoid-all', 'css', 'legacy'] }
     };
 
     // Small timeout to ensure DOM render
